@@ -6,6 +6,7 @@ import hello.hellospring.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.lang.model.SourceVersion;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
@@ -24,10 +25,12 @@ public class MemberService {
     // 회원 가입
     public Long join(Member member){
 
+
         //같은 이름의 중복 회원 불가
         validateDuplicateMember(member);
         memberRepository.save(member);
         return member.getId();
+
     }
 
     private void validateDuplicateMember(Member member) {
